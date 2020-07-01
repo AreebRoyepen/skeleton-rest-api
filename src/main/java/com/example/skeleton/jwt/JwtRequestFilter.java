@@ -52,6 +52,8 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 			logger.info("User Registering");
 		} else if (request.getRequestURI().contains("login")) {
 			logger.info("User Logging In");
+		} else if (request.getRequestURI().contains("refresh")) {
+			logger.info("token refresh");
 		} else {
 			logger.warn("JWT Token does not begin with Bearer String");
 		}
