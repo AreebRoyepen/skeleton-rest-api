@@ -7,17 +7,16 @@ import com.example.skeleton.enums.ResponseStatus;
 import com.example.skeleton.exception.ValidationException;
 import com.example.skeleton.models.Member;
 import com.example.skeleton.repositories.MemberRepo;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
+@Log4j2
 public class MemberService {
 
-    Logger logger = LoggerFactory.getLogger(com.example.skeleton.services.MemberService.class);
 
     MemberRepo memberRepo;
 
@@ -102,7 +101,7 @@ public class MemberService {
 
         }catch(NoSuchElementException e) {
 
-            logger.error("Trying to update a member that does not exist");
+            log.error("Trying to update a member that does not exist");
             throw new ValidationException("No such member");
 
         }catch(Exception ex){
